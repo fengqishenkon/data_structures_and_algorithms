@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 
 #include"queue.h"
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void QueueInit(Queue* pq)
 {
 	assert(pq);
@@ -8,7 +8,7 @@ void QueueInit(Queue* pq)
 	pq->size = 0;
 }
 
-//Èë¶Ó¡ª¡ª¶ÓÎ²
+//å…¥é˜Ÿâ€”â€”é˜Ÿå°¾
 void QueuePush(Queue* pq, QDataType x)
 {
 	QueueNode* newnode = (QueueNode*)malloc(sizeof(QueueNode));
@@ -19,13 +19,13 @@ void QueuePush(Queue* pq, QDataType x)
 	}
 	newnode->data = x;
 	newnode->next = NULL;
-	//¶ÓÁÐÎª¿Õ
+	//é˜Ÿåˆ—ä¸ºç©º
 	if (pq->phead ==NULL)
 	{
 		pq->phead = pq->ptail = newnode;
 
 	}
-	else//¶ÓÁÐ²»Îª¿Õ
+	else//é˜Ÿåˆ—ä¸ä¸ºç©º
 	{
 		pq->ptail->next = newnode;
 		pq->ptail = newnode;
@@ -34,18 +34,18 @@ void QueuePush(Queue* pq, QDataType x)
 }
 
 
-//¶ÓÁÐÅÐ¿Õ
+//é˜Ÿåˆ—åˆ¤ç©º
 bool QueueEmpty(Queue* pq)
 {
 	assert(pq);
 	return pq->phead == NULL;
 }
 
-//³ö¶Ó¡ª¡ª¶ÓÍ·
+//å‡ºé˜Ÿâ€”â€”é˜Ÿå¤´
 void QueuePop(Queue* pq)
 {
 	assert(!QueueEmpty(pq));
-	//Ö»ÓÐÒ»¸ö½áµã£¬pheadºÍptail¶¼ÖÃÎª¿Õ
+	//åªæœ‰ä¸€ä¸ªç»“ç‚¹ï¼Œpheadå’Œptailéƒ½ç½®ä¸ºç©º
 	if (pq->phead == pq->ptail)
 	{
 		free(pq->phead);
@@ -53,7 +53,7 @@ void QueuePop(Queue* pq)
 	}
 	else
 	{
-		Queue* prue = pq->phead;
+		QueueNode* prue = pq->phead;
 		pq->phead = pq->phead->next;
 		free(prue);
 		prue = NULL;
@@ -62,21 +62,21 @@ void QueuePop(Queue* pq)
 
 }
 
-//¶ÓÁÐÓÐÐ§ÔªËØ¸öÊý
+//é˜Ÿåˆ—æœ‰æ•ˆå…ƒç´ ä¸ªæ•°
 int QueueSize(Queue* pq)
 {
 	assert(!QueueEmpty(pq));
 	return pq->size;
 }
 
-//È¡¶ÓÍ·Êý¾Ý
+//å–é˜Ÿå¤´æ•°æ®
 QDataType QueueFront(Queue* pq)
 {
 	assert(!QueueEmpty(pq));
 	return pq->phead->data;
 }
 
-//È¡¶ÓÎ²Êý¾Ý
+//å–é˜Ÿå°¾æ•°æ®
 QDataType QueueBack(Queue* pq)
 {
 	assert(!QueueEmpty(pq));
@@ -86,7 +86,7 @@ QDataType QueueBack(Queue* pq)
 
 
 
-////Ïú»Ù¶ÓÁÐ
+////é”€æ¯é˜Ÿåˆ—
 //void QueueDestroy(Queue* pq)
 //{
 //	QueueNode* pcur = pq->phead;
@@ -98,4 +98,5 @@ QDataType QueueBack(Queue* pq)
 //	}
 //	pq->phead = pq->ptail = NULL;
 //	pq->size = 0;
+
 //}
